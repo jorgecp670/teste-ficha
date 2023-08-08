@@ -10,10 +10,14 @@
         <h1>Ficha de Personagem</h1>
         
         <!-- Adicione o input para upload de imagem do personagem -->
-        <div class="character-image-upload">
-            <label for="characterImage">Imagem do Personagem:</label>
-            <input type="file" id="characterImage" name="characterImage">
-        </div>
+        <label class="picture" for="picture__input" tabIndex="0">
+            <span class="picture__image"></span>
+          </label>
+          
+          <input type="file" name="picture__input" id="picture__input">
+        
+        
+       
         <form id="characterForm">
             <h2>Dados do Personagem</h2>
             <label for="name">Nome:</label>

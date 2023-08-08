@@ -1,3 +1,31 @@
+const inputFile = document.querySelector("#picture__input");
+const pictureImage = document.querySelector(".picture__image");
+const pictureImageTxt = "Choose an image";
+pictureImage.innerHTML = pictureImageTxt;
+
+inputFile.addEventListener("change", function (e) {
+  const inputTarget = e.target;
+  const file = inputTarget.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.addEventListener("load", function (e) {
+      const readerTarget = e.target;
+
+      const img = document.createElement("img");
+      img.src = readerTarget.result;
+      img.classList.add("picture__img");
+
+      pictureImage.innerHTML = "";
+      pictureImage.appendChild(img);
+    });
+
+    reader.readAsDataURL(file);
+  } else {
+    pictureImage.innerHTML = pictureImageTxt;
+  }
+});
 document.addEventListener('DOMContentLoaded', function () {
     const rollDiceButton = document.getElementById('rollDiceButton');
     const diceResultSpan = document.getElementById('diceResultSpan');
@@ -30,18 +58,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         characterSheet.style.display = 'block';
         characterDetails.innerHTML = characterSheetContent;
-    // Adicione a imagem do personagem à ficha
-    const characterImage = document.getElementById('characterImage').files[0];
-    if (characterImage) {
-        characterDetails.innerHTML = `
-            <h2>Ficha de Personagem</h2>
-            <div class="character-image">
-                <img src="${URL.createObjectURL(characterImage)}" alt="Imagem do Personagem">
-            </div>
-            ${characterDetails.innerHTML}
-        `;
-    }
-}
 
 characterForm.addEventListener('submit', function (event) {
     event.preventDefault();
