@@ -4,6 +4,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const characterForm = document.getElementById('characterForm');
     const characterSheet = document.getElementById('characterSheet');
     const characterDetails = document.getElementById('characterDetails');
+    const requiredFields = ['name', 'characterClass', 'region', 'faith'];
+
+    const inputFile = document.querySelector("#picture__input");
+    const pictureImage = document.querySelector(".picture__image");
+    const pictureImageTxt = "Choose an image";
+    pictureImage.innerHTML = pictureImageTxt;
 
     function rollDice() {
         const diceQuantity = parseInt(document.getElementById('diceQuantity').value);
@@ -20,34 +26,21 @@ document.addEventListener('DOMContentLoaded', function () {
         diceResultSpan.textContent = `${totalRoll} (${individualRolls.join(', ')})`;
     }
 
-    rollDiceButton.addEventListener('click', rollDice);
-
-    function displayCharacterSheet() {
-        const formData = new FormData(characterForm);
+    function displayCharacterSheet(formData) {
         const characterSheetContent = `
             <!-- ... (código anterior) ... -->
         `;
 
         characterSheet.style.display = 'block';
         characterDetails.innerHTML = characterSheetContent;
-    // Adicione a imagem do personagem à ficha
-    const characterImage = document.getElementById('characterImage').files[0];
-    if (characterImage) {
-        characterDetails.innerHTML = `
-            <h2>Ficha de Personagem</h2>
-            <div class="character-image">
-                <img src="${URL.createObjectURL(characterImage)}" alt="Imagem do Personagem">
-            </div>
-            ${characterDetails.innerHTML}
-        `;
     }
-}
 
-characterForm.addEventListener('submit', function (event) {
-    event.preventDefault();
+    rollDiceButton.addEventListener('click', rollDice);
+
+    characterForm.addEventListener('submit', function (event) {
+        event.preventDefault();
 
         // Verificar se todos os campos obrigatórios estão preenchidos
-        const requiredFields = ['name', 'characterClass', 'region', 'faith'];
         let formIsValid = true;
 
         requiredFields.forEach(field => {
@@ -61,10 +54,34 @@ characterForm.addEventListener('submit', function (event) {
         });
 
         if (formIsValid) {
-            displayCharacterSheet();
+            displayCharacterSheet(new FormData(characterForm));
         } else {
             characterSheet.style.display = 'none';
             characterDetails.innerHTML = '<p class="error-message">Preencha todos os campos obrigatórios.</p>';
+        }
+    });
+
+    inputFile.addEventListener("change", function (e) {
+        const inputTarget = e.target;
+        const file = inputTarget.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.addEventListener("load", function (e) {
+                const readerTarget = e.target;
+
+                const img = document.createElement("img");
+                img.src = readerTarget.result;
+                img.classList.add("picture__img");
+
+                pictureImage.innerHTML = "";
+                pictureImage.appendChild(img);
+            });
+
+            reader.readAsDataURL(file);
+        } else {
+            pictureImage.innerHTML = pictureImageTxt;
         }
     });
 });

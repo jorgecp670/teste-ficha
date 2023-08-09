@@ -10,10 +10,14 @@
         <h1>Ficha de Personagem</h1>
         
         <!-- Adicione o input para upload de imagem do personagem -->
-        <div class="character-image-upload">
-            <label for="characterImage">Imagem do Personagem:</label>
-            <input type="file" id="characterImage" name="characterImage">
-        </div>
+        <label class="picture" for="picture__input" tabIndex="0">
+            <span class="picture__image"></span>
+          </label>
+          
+          <input type="file" name="picture__input" id="picture__input">
+        
+        
+       
         <form id="characterForm">
             <h2>Dados do Personagem</h2>
             <label for="name">Nome:</label>
@@ -98,6 +102,59 @@
                 </div>
             </div>
 
+            <h2>Perícias</h2>
+            <div class="skills">
+                <div class="skill">
+                    <label for="skill1">Perícia 1:</label>
+                    <input type="text" id="skill1" name="skill1">
+                </div>
+
+                <div class="skill">
+                    <label for="skill2">Perícia 2:</label>
+                    <input type="text" id="skill2" name="skill2">
+                </div>
+
+                <div class="skill">
+                    <label for="skill3">Perícia 3:</label>
+                    <input type="text" id="skill3" name="skill3">
+                </div>
+            
+                <div class="skill">
+                    <label for="skill4">Perícia 4:</label>
+                    <input type="text" id="skill4" name="skill4">
+                </div>
+         
+                <div class="skill">
+                    <label for="skill5">Perícia 5:</label>
+                    <input type="text" id="skill5" name="skill5">
+                </div>
+            
+                <div class="skill">
+                    <label for="skill6">Perícia 6:</label>
+                    <input type="text" id="skill6" name="skill6">
+                </div>
+            
+                <div class="skill">
+                    <label for="skill7">Perícia 7:</label>
+                    <input type="text" id="skill7" name="skill7">
+                </div>
+            
+                <div class="skill">
+                    <label for="skill8">Perícia 8:</label>
+                    <input type="text" id="skill8" name="skill8">
+                </div>
+            
+                <div class="skill">
+                    <label for="skill9">Perícia 9:</label>
+                    <input type="text" id="skill9" name="skill9">
+                </div>
+           
+                <div class="skill">
+                    <label for="skill10">Perícia 10:</label>
+                    <input type="text" id="skill10" name="skill10">
+                </div>
+            </div>
+
             <h2>Itens</h2>
             <div class="items">
                 <h3>Consumíveis:</h3>
@@ -140,6 +197,16 @@
                 </div>
 
                 <div class="item">
+                    <label for="armorAbility2">Habilidade 2:</label>
+                    <input type="text" id="armorAbility2" name="armorAbility2">
+                </div>
+
+                <div class="item">
+                    <label for="armorAbility3">Habilidade 3:</label>
+                    <input type="text" id="armorAbility3" name="armorAbility3">
+                </div>
+
+                <div class="item">
                     <label for="armorDurability">Durabilidade:</label>
                     <input type="text" id="armorDurability" name="armorDurability">
                 </div>
@@ -160,6 +227,16 @@
                 <div class="item">
                     <label for="weaponAbility1">Habilidade 1:</label>
                     <input type="text" id="weaponAbility1" name="weaponAbility1">
+                </div>
+
+                <div class="item">
+                    <label for="weaponAbility2">Habilidade 2:</label>
+                    <input type="text" id="weaponAbility2" name="weaponAbility2">
+                </div>
+
+                <div class="item">
+                    <label for="weaponAbility3">Habilidade 3:</label>
+                    <input type="text" id="weaponAbility3" name="weaponAbility3">
                 </div>
 
                 <div class="item">
@@ -206,19 +283,19 @@
     </div>
 
     </script>
-  // Import the functions you need from the SDKs you need
+    // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBMz8M1rnrA7pU6WiwgDYdbFBRSTD3r9gc",
-  authDomain: "ficha-stream-teste.firebaseapp.com",
-  projectId: "ficha-stream-teste",
-  storageBucket: "ficha-stream-teste.appspot.com",
-  messagingSenderId: "553240322499",
-  appId: "1:553240322499:web:2c89f4ee047d9c2ab2dd76"
+  apiKey: "AIzaSyAxH5o_IV9WZn72FyYUeyM4JbF4ls4cvqw",
+  authDomain: "ficha-teste-ad5fa.firebaseapp.com",
+  projectId: "ficha-teste-ad5fa",
+  storageBucket: "ficha-teste-ad5fa.appspot.com",
+  messagingSenderId: "890260354540",
+  appId: "1:890260354540:web:7b64a2205de5a347fc3cc9"
 };
 
 // Initialize Firebase
